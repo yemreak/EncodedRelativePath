@@ -1,0 +1,120 @@
+{
+    "name": "encodedrelativepath",
+    "description": "Get encoded relative url paths from files in the current workspace.",
+    "version": "1.0.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/yedhrab/EncodedRelativePath"
+    },
+    "publisher": "yedhrab",
+    "galleryBanner": {
+        "color": "#242A31",
+        "theme": "dark"
+    },
+    "engines": {
+        "vscode": "^1.22.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "license": "MIT",
+    "displayName": "Encoded Relative Path",
+    "activationEvents": [
+        "onCommand:extension.encodedRelativePath"
+    ],
+    "main": "./out/src/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.encodedRelativePath",
+                "title": "Encoded Relative Path"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "extension.encodedRelativePath",
+                "key": "ctrl+shift+h",
+                "mac": "cmd+shift+h",
+                "when": "editorTextFocus"
+            }
+        ],
+        "configuration": {
+            "title": "EncodedRelativePath extension configuration",
+            "type": "object",
+            "properties": {
+                "encodedRelativePath.include": {
+                    "type": "string",
+                    "default": "/**/*.*",
+                    "description": "A glob by which to filter results"
+                },
+                "encodedRelativePath.ignore": {
+                    "type": "array",
+                    "default": [
+                        "**/node_modules/**",
+                        "**/*.dll",
+                        "**/obj/**",
+                        "**/objd/**"
+                    ],
+                    "description": "An array of glob keys to ignore when searching.",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "encodedRelativePath.removeExtension": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Excludes the extension from the relative path url (Useful for systemjs imports)."
+                },
+                "encodedRelativePath.excludedExtensions": {
+                    "type": "array",
+                    "default": [
+                        ".js",
+                        ".ts"
+                    ],
+                    "description": "An array of extensions to exclude from the relative path url (Useful for used with Webpack or when importing files of mixed types)"
+                },
+                "encodedRelativePath.removeLeadingDot": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Removes the leading ./ character when the path is pointing to a parent folder."
+                },
+                "encodedRelativePath.omitParts": {
+                    "type": "array",
+                    "default": [
+                        "\\/index$"
+                    ],
+                    "description": "Omit path parts by matched Regular Expressions"
+                },
+                "encodedRelativePath.extendedLimit": {
+                    "type": "int",
+                    "default": 1000,
+                    "description": "Number of results after which use is asked to further filter their search"
+                }
+            }
+        }
+    },
+    "icon": "res/icon.png",
+    "keywords": [
+        "encoded",
+        "relative",
+        "path",
+        "url",
+        "file"
+    ],
+    "scripts": {
+        "vscode:prepublish": "tsc -p ./",
+        "compile": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install"
+    },
+    "devDependencies": {
+        "@types/mocha": "^2.2.32",
+        "@types/node": "^6.0.40",
+        "mocha": "^6.2.1",
+        "typescript": "^2.6.2",
+        "vscode": "^1.1.36"
+    },
+    "dependencies": {
+        "@types/glob": "^5.0.34",
+        "glob": "^7.1.2"
+    }
+}
