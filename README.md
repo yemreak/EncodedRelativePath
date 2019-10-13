@@ -27,12 +27,16 @@ cached to improve search performance. If you have multiple large folders part of
 frequent switches between folders might slow you down.
 
 ### 📁 In Single project workspace:
+
 The caching of the filelist in the project happens only once. If your workspace contains a lot of files
 please wait for the initial file list to be created.
 
 ## ⛏ Options
+
 The following Visual Studio Code settings are available for the RelativePath extension. They can be set in user preferences (`ctrl+,` or `cmd+,`) or workspace settings (.vscode/settings.json).
+
 ```javascript
+
 	// An array of glob keys to ignore when searching.
 	"encodedRelativePath.ignore": [
 		"**/node_modules/**",
@@ -41,6 +45,9 @@ The following Visual Studio Code settings are available for the RelativePath ext
 		"**/objd/**"
 	],
 
+	// A glob by which to filter results
+	"encodedRelativePath.include": "/**/*.*"
+
 	// Excludes the extension from the relative path url (Useful for systemjs imports).
 	"encodedRelativePath.removeExtension": false,
 
@@ -48,4 +55,7 @@ The following Visual Studio Code settings are available for the RelativePath ext
 	"encodedRelativePath.excludedExtensions": [
 		".js"
 	],
+
 ```
+
+> For more options type `encodedRelativePath.` in `settings.json`.
