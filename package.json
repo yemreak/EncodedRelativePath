@@ -1,7 +1,7 @@
 {
     "name": "encodedrelativepath",
     "description": "Get encoded relative url paths from files in the current workspace.",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "repository": {
         "type": "git",
         "url": "https://github.com/yedhrab/EncodedRelativePath"
